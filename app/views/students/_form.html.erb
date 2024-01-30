@@ -1,0 +1,21 @@
+<%= form_with model: student do |form| %>
+  <div>
+    <%= form.label :Name %><br>
+    <%= form.text_field :Name %>
+    <% Name.errors.full_messages_for(Name).each do |message| %>
+      <div><%= message %></div>
+    <% end %>
+  </div>
+
+  <div>
+    <%= form.label :Login %><br>
+    <%= form.text_area :Login %><br>
+    <% student.errors.full_messages_for(:Login).each do |message| %>
+      <div><%= message %></div>
+    <% end %>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>
