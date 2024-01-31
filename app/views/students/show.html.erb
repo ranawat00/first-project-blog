@@ -1,6 +1,6 @@
 <h1><%= @student.Name %></h1>
 
-<p><%= @student.Name %></p>
+<p><%= @student.Login %></p>
 
 <ul>
   <li><%= link_to "Edit", edit_student_path(@student) %></li>
@@ -9,3 +9,9 @@
                     turbo_confirm: "Are you sure?"
                   } %></li>
 </ul>
+
+<h2>Comments</h2>
+<%= render @student.comments %>
+
+<h2>Add a comment:</h2>
+<%= render 'comments/form' %>

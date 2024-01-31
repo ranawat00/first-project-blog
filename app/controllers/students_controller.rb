@@ -1,4 +1,5 @@
 class StudentsController < ApplicationController
+  http_basic_authenticate_with name: "Gaurav", password: "123456789", except: [:index, :show]
   def index
     @students = Student.all
   end
@@ -44,6 +45,15 @@ class StudentsController < ApplicationController
 
   private
     def student_params
-      params.require(:student).permit(:Name, :Login)
+      params.require(:student).permit(:Name, :Login, :status)
     end
+
+
+  private
+  def comment_params
+    params.require(:comment).permit(:commenter, :body, :status)
+  end
+
+  
+
 end

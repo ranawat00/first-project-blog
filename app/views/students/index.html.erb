@@ -2,10 +2,12 @@
 
 <ul>
   <% @students.each do |student| %>
-    <li>
-      <%= link_to student.Name, student %>
-    </li>
+    <% unless student.archived? %>
+      <li>
+        <%= link_to student.Name, student %>
+      </li>
+    <% end %>
   <% end %>
 </ul>
 
-<%= link_to "New Student", new_student_path %>
+<%= link_to "New Students", new_student_path %>
