@@ -3,7 +3,7 @@ class Api::V1::StudentsController < ApplicationController
 
   def index 
     @students = Student.all 
-    render json: @students, status: :ok
+    render json: @students, each_serializer: V1::StudentSerializer, status: :ok
   end
 
   def show
@@ -19,7 +19,7 @@ class Api::V1::StudentsController < ApplicationController
     @student= Student.new(student_params)
 
     if @student.save
-      render json: @student, status: :created
+      render json: @student, serializer: V1::StudentcreateSerializer, status: :ok
     else
       render json: {'message': 'Invalid'}, status: :unprocessable_entity
     end
@@ -38,7 +38,7 @@ class Api::V1::StudentsController < ApplicationController
   def destroy
     @student = Student.find(params[:id])
     if @student.destroy
-      render json: @student,status: :ok
+      render json: {message: "Student has been deleted successfully."}
     else 
       render json: {'message': 'Invalid'},status: :unprocessable_entity
     end
